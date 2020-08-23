@@ -182,6 +182,9 @@ class TrunkedBodyParser {
         this.length += parseInt(char, 16);
       }
     } else if (this.currentStatus === this.WAIT_LENGTH_LINE_END) {
+      if (this.length === 0) {
+        return;
+      }
       if (char === '\n') {
         this.currentStatus = this.READ_TRUNK;
       }
